@@ -10,6 +10,10 @@ const authRoutes = require("./src/routes/authRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const scoreRoutes = require("./src/routes/scoreRoutes");
 
+console.log("authRoutes typeof:", typeof authRoutes);
+console.log("userRoutes typeof:", typeof userRoutes);
+console.log("scoreRoutes typeof:", typeof scoreRoutes);
+
 // Load environment variables from .env file
 dotenv.config();
 
