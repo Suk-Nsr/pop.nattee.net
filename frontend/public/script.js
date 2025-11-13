@@ -18,5 +18,5 @@ btn.addEventListener('click', async () => {
     score += 1;
     scoreDisplay.innerText = score;
 
-    setTimeout(() => { btn.setAttribute("src", "picture/image.png"); }, 100);
+    setTimeout(() => { btn.setAttribute("src", "picture/image.png"); }, 10);
 })
