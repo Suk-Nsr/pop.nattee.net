@@ -3,15 +3,29 @@
 
 const express = require("express");
 const dotenv = require("dotenv");
+const connectDB = require("./src/config/db");
 
-// Load environment variables from .env file (will create later)
+// Import routes
+const authRoutes = require("./src/routes/authRoutes");
+const userRoutes = require("./src/routes/userRoutes");
+const scoreRoutes = require("./src/routes/scoreRoutes");
+
+// Load environment variables from .env file
 dotenv.config();
+
+// Connect to MongoDB
+connectDB();
 
 // Create Express app
 const app = express();
 
-// Middleware: allow JSON in request body (e.g. POST /api/user with JSON)
+// Middleware: allow JSON in request body
 app.use(express.json());
+
+// Mount routes with base paths
+app.use("/api/auth", authRoutes);   // /api/auth/...
+app.use("/api/users", userRoutes);  // /api/users/...
+app.use("/api", scoreRoutes);       // /api/score, /api/leaderboard later
 
 // Simple test route to check server is working
 app.get("/api/health", (req, res) => {
@@ -23,5 +37,5 @@ const PORT = process.env.PORT || 3000;
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
