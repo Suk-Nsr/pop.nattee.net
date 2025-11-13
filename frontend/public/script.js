@@ -7,7 +7,7 @@ const sawasdeeFile = [
     'sawasdee/4.mp3',
 ]
 
-btn.addEventListener('click', async () => {
+btn.addEventListener('mousedown', async () => {
     btn.setAttribute("src", "picture/speak.png");
 
     const randomIndex = Math.floor(Math.random() * sawasdeeFile.length);
@@ -17,6 +17,8 @@ btn.addEventListener('click', async () => {
     nattee.play();
     score += 1;
     scoreDisplay.innerText = score;
+})
 
-    setTimeout(() => { btn.setAttribute("src", "picture/image.png"); }, 10);
+btn.addEventListener("mouseup", () => {
+    btn.setAttribute("src", "picture/image.png")
 })
