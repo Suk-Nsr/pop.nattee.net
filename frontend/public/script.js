@@ -1,6 +1,8 @@
-const natteeBtn = document.getElementById("natteeBtn")
-const scoreDisplay = document.getElementById("scoreDisplay")
-const filterLeaderboardBtn = document.getElementById("filterLeaderboard")
+const natteeBtn = document.getElementById("natteeBtn");
+const scoreDisplay = document.getElementById("scoreDisplay");
+const filterLeaderboardBtn = document.getElementById("filterLeaderboard");
+const showLeaderBoardBtn = document.getElementById("upDownArrow");
+const leaderBoardFrame = document.getElementById("leaderboardFrame");
 
 let score = 0;
 let filter = 'All';
@@ -52,3 +54,44 @@ document.addEventListener('keyup', () => handleClickNatteeUp(), false);
 natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 
 //FILTER LEADERBOARD
+
+function handleFilterLeaderboard() {
+
+    if (filter === 'All') {
+        filter = 'Student';
+        filterLeaderboardBtn.innerHTML = 'Student';
+        filterLeaderboardBtn.style.backgroundColor = 'green';
+    }
+
+    else if (filter == 'Student') {
+        filter = 'Teacher';
+        filterLeaderboardBtn.innerHTML = 'Teacher';
+        filterLeaderboardBtn.style.backgroundColor = 'blue';
+    }
+
+    else if (filter == 'Teacher') {
+        filter = 'All';
+        filterLeaderboardBtn.innerHTML = 'All';
+        filterLeaderboardBtn.style.backgroundColor = 'purple';
+    }
+
+    console.log(filter);
+}
+
+filterLeaderboardBtn.addEventListener('click', () => handleFilterLeaderboard(), false)
+
+//SHOW / HIDE LEADERBOARD
+
+function handleShowLeaderBoard() {
+    if (leaderBoardFrame.style.display === 'none') {
+        leaderBoardFrame.style.display = 'block';
+        showLeaderBoardBtn.innerHTML = '&#x21e9;';
+    }
+
+    else {
+        leaderBoardFrame.style.display = 'none';
+        showLeaderBoardBtn.innerHTML = '&#x21e7;';
+    }
+}
+
+showLeaderBoardBtn.addEventListener("click", () => handleShowLeaderBoard());
