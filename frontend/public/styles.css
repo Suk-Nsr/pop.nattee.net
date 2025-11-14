@@ -40,7 +40,8 @@ main {
     background-image: url('picture/grass.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    
+    background-position: center top;
+
     height: 100vh;
 }
 
@@ -54,7 +55,14 @@ h2 {
 }
 
 main img {
-    height: 60vw;
+    width: min(65vw, 65vh);
+
+    position: absolute;
+    bottom: 10vh;
+    right: 50%;
+    transform: translateX(50%);
+
+    /*margin-top: 15vh;*/
     
 }
 
