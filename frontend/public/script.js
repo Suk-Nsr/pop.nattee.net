@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000/api";
+const API_BASE_URL = "https://pop-nattee-net-backend.onrender.com/api";
 
 const natteeBtn = document.getElementById("natteeBtn");
 const scoreDisplay = document.getElementById("scoreDisplay");
