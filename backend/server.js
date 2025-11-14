@@ -31,7 +31,7 @@ app.use(express.json());
 // Enable CORS — set origin to where you serve frontend (Live Server / static host).
 // For quick local dev you can allow all origins, but restrict in production.
 app.use(cors({
-  origin: "http://localhost:3221", // change to your frontend origin or use "*" for dev
+  origin: "https://pop-nattee-net.onrender.com", // change to your frontend origin or use "*" for dev
   credentials: true
 }));
 
