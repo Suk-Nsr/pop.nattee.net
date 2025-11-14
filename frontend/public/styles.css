@@ -3,15 +3,19 @@ body {
     padding: 0;
 
     font-family: Sarabun;
+
+    overflow-y: hidden;
+
+    
 }
 
 h1 {
     color: white;
     text-align: center;
-    padding: 0;
+    padding: 1.5vh 0;
     margin: 0;
 
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -22,16 +26,22 @@ header {
 
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: stretch;
 
     color: white;
     text-align: center;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+    padding: 1vh 20px;
 }
 
 main {
     text-align: center;
+
+    background-image: url('picture/grass.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    height: 100vh;
 }
 
 h2 {
@@ -43,25 +53,86 @@ h2 {
     color: white;
 }
 
-img {
-    width: min(90vh, 90vw);
+main img {
+    height: 60vw;
     
 }
 
 footer {
-    background-color: whitesmoke;
     position: fixed;
+    margin: 0;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
 }
 
 footer p {
     text-align: center;
+    font-size: 20px;
+    margin: 0;
 }
 
-.leaderBoard {
-    background-color: red;
-    position: fixed;
+.leadertop, .leaderboard {
+    background-color: whitesmoke;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.5rem 15px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.leadertop span {
+    background-color: purple;
+    
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+
+    border-radius: 20px;
+    padding: 3px 15px;
+
+    margin-left: 5px;
+}
+
+.leadertop span:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.leadertop #upDownArrow {
+    padding: 1px 9px;
+    border-radius: 50%;
+}
+.leadertop #upDownArrow:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+}
+
+.leaderboard table {
+    width: 100%;
+    text-align: center;
+}
+
+.leaderboard {
+    border-radius: 0;
+    border-top: 1px solid grey;
+}
+
+.copyright p {
+    background-color: lightgray;
+    padding: 1.5vh;
+
+    border-top: 1px solid grey;
+    
 }
 
 #userBox {

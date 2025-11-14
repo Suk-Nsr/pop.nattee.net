@@ -8,7 +8,6 @@
 </head>
 <body>    
     <header>
-        <div></div>
         <h1>POP NATTEE</h1>
         <div id="userBox">
             <p>Login</p>
@@ -16,15 +15,44 @@
     </header>
     <main>
         <h2 id="scoreDisplay">0</h2>
-        <img id="btn", src="picture/image.png" alt="" srcset="">
+        <img id="natteeBtn", src="picture/image.png" alt="" srcset="">
     </main>
 
     
     <footer>
-        <div class="leaderBoard">
-        Test
+        <div class="leadertop">
+            <p>Leaderboard <span id="filterLeaderboard">Student</span> </p>
+            <p id="upDownArrow">&#8682;</p>
         </div>
-        <p>Team : WE LOVE CEE</p>
+        <div class="leaderboard">
+            <table>
+                <thead>
+                    <th width="1">Pos</th>
+                    <th>Name</th>
+                    <th width="5">Score</th>
+                </thead>
+                <tbody id="leaderboard">
+                    <tr>
+                        <td>1</td>
+                        <td>Test</td>
+                        <td>10,000,000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Test2</td>
+                        <td>10,000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Test</td>
+                        <td>10,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 | Team : WE LOVE CEE</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
