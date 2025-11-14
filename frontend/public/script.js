@@ -52,6 +52,3 @@ document.addEventListener('keyup', () => handleClickNatteeUp(), false);
 natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 
 //FILTER LEADERBOARD
-function handleChangeMode(event) {
-    if
-}
