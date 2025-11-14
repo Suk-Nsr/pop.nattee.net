@@ -5,6 +5,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./src/config/db");
 
+const cors = require("cors");
+
 // Import routes
 const authRoutes = require("./src/routes/authRoutes");
 const userRoutes = require("./src/routes/userRoutes");
@@ -25,6 +27,13 @@ const app = express();
 
 // Middleware: allow JSON in request body
 app.use(express.json());
+
+// Enable CORS — set origin to where you serve frontend (Live Server / static host).
+// For quick local dev you can allow all origins, but restrict in production.
+app.use(cors({
+  origin: "http://localhost:3221", // change to your frontend origin or use "*" for dev
+  credentials: true
+}));
 
 // Mount routes with base paths
 app.use("/api/auth", authRoutes);   // /api/auth/...
