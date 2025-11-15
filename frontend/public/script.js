@@ -44,7 +44,7 @@ function updateLeaderboard() {
 
 function startLeaderboardTimer() {
   updateLeaderboard();
-  leaderboardUpdateTimer = setInterval(updateLeaderboard, 30000); // Update every 30 seconds
+  leaderboardUpdateTimer = setInterval(updateLeaderboard, 10000); // Update every 10 seconds
 }
 
 function handleClickNatteeDown(event) {
