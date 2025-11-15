@@ -13,8 +13,7 @@ const createAccountError = document.getElementById("createAccountError");
 
 let score = 0;
 let filter = 'All';
-const LEADERBOARD_UPDATE_EVERY = 10;
-let clicksSinceLastLeaderboard = 0;
+let leaderboardUpdateTimer;
 
 const sawasdeeFile = [
     'sawasdee/1.mp3',
@@ -39,6 +38,15 @@ const sawasdeeFile = [
 
 //CLICK NATTEE
 
+function updateLeaderboard() {
+  fetchLeaderboard(filter);
+}
+
+function startLeaderboardTimer() {
+  updateLeaderboard();
+  leaderboardUpdateTimer = setInterval(updateLeaderboard, 30000); // Update every 30 seconds
+}
+
 function handleClickNatteeDown(event) {
     
     if (!event.repeat && formContainer.style.display === 'none') {
@@ -53,13 +61,6 @@ function handleClickNatteeDown(event) {
         scoreDisplay.innerText = score;
 
         saveScore();
-
-        clicksSinceLastLeaderboard += 1;
-        if (clicksSinceLastLeaderboard >= LEADERBOARD_UPDATE_EVERY) {
-            fetchLeaderboard(filter);
-            clicksSinceLastLeaderboard = 0;
-        }
-
     }
     
 };
@@ -338,6 +339,6 @@ document.getElementById("logoutHeader").addEventListener("click", logoutUser);
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateLoginHeader();
-  fetchLeaderboard("All");
   setScoreFromUser();
+  startLeaderboardTimer();
 });
