@@ -13,6 +13,8 @@ const createAccountError = document.getElementById("createAccountError");
 
 let score = 0;
 let filter = 'All';
+const LEADERBOARD_UPDATE_EVERY = 10;
+let clicksSinceLastLeaderboard = 0;
 
 const sawasdeeFile = [
     'sawasdee/1.mp3',
@@ -50,10 +52,13 @@ function handleClickNatteeDown(event) {
         score += 1;
         scoreDisplay.innerText = score;
 
-        if (score % 1 === 0) {
-            saveScore();
+        saveScore();
+
+        clicksSinceLastLeaderboard += 1;
+        if (clicksSinceLastLeaderboard >= LEADERBOARD_UPDATE_EVERY) {
+            fetchLeaderboard(filter);
+            clicksSinceLastLeaderboard = 0;
         }
-        fetchLeaderboard(filter);
 
     }
     
