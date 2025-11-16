@@ -304,7 +304,7 @@ function displayLeaderboard(users) {
     row.innerHTML = `
       <td>${index + 1}</td>
       <td>${user.username}</td>
-      <td>${user.bestScore.toLocaleString()}</td>
+      <td>${user.bestScore}</td>
     `;
     leaderboardBody.appendChild(row);
   });
