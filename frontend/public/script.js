@@ -94,19 +94,19 @@ natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 function handleFilterLeaderboard() {
 
   if (filter === 'All') {
-    filter = 'Student';
+    filter = "student";
     filterLeaderboardBtn.innerHTML = 'Student';
     filterLeaderboardBtn.style.backgroundColor = 'green';
   }
 
-  else if (filter == 'Student') {
-    filter = 'Teacher';
+  else if (filter == "student") {
+    filter = "teacher";
     filterLeaderboardBtn.innerHTML = 'Teacher';
     filterLeaderboardBtn.style.backgroundColor = 'blue';
   }
 
   else if (filter == 'Teacher') {
-    filter = 'All';
+    filter = "all";
     filterLeaderboardBtn.innerHTML = 'All';
     filterLeaderboardBtn.style.backgroundColor = 'purple';
   }
@@ -361,4 +361,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLoginHeader();
   setScoreFromUser();
   startLeaderboardTimer();
+  showForm('login');
 });
