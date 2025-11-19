@@ -261,7 +261,7 @@ function logoutUser() {
 }
 
 // Delete account (prompt for password then call backend)
-document.getElementById("deleteAccountBtn").addEventListener("click", async () => {
+document.getElementById("deleteAccountHeader").addEventListener("click", async () => {
   if (!currentUser || !authToken) {
     alert("Not logged in.");
     return;
@@ -302,16 +302,16 @@ document.getElementById("deleteAccountBtn").addEventListener("click", async () =
 function updateLoginHeader() {
   const loginHeader = document.getElementById("loginHeader");
   const logoutHeader = document.getElementById("logoutHeader");
-  const deleteBtn = document.getElementById("deleteAccountBtn");
+  const deleteAccountHeader = document.getElementById("deleteAccountHeader");
 
   if (currentUser) {
     loginHeader.style.display = "none";
+    deleteAccountHeader.style.display = "inline-block";
     logoutHeader.style.display = "block";
-    if (deleteBtn) deleteBtn.style.display = "inline-block";
   } else {
     loginHeader.style.display = "block";
+    deleteAccountHeader.style.display = "none";
     logoutHeader.style.display = "none";
-    if (deleteBtn) deleteBtn.style.display = "none";
   }
 }
 

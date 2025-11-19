@@ -295,25 +295,52 @@ button {
 }
 
 .close-btn {
-        /* Positioning the button */
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        
-        /* Appearance */
-        background: none;
-        border: none;
-        font-size: 20px;
-        font-weight: bold;
-        color: #333;
-        cursor: pointer;
-        padding: 5px;
-        line-height: 1; /* Ensures 'x' is vertically centered */
-        opacity: 0.7;
-        transition: opacity 0.2s;
-    }
+    /* Positioning the button */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+    /* Appearance */
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1; /* Ensures 'x' is vertically centered */
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
 
-    .close-btn:hover {
-        opacity: 1;
-        color: #f00; /* Red color on hover */
-    }
+.close-btn:hover {
+    opacity: 1;
+    color: #f00; /* Red color on hover */
+}
+
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.header-flex h1 {
+    flex: 0 0 auto;
+}
+
+.loginHeader, .deleteAccountHeader {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0 20px;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.loginHeader:hover, .deleteAccountHeader:hover {
+    background-color: white;
+    color: rgb(0, 116, 217);
+}
