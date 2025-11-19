@@ -360,6 +360,14 @@ document.getElementById("logoutHeader").addEventListener("click", logoutUser);
 document.addEventListener("DOMContentLoaded", () => {
   updateLoginHeader();
   setScoreFromUser();
+
+  // If a user is already logged in (saved in localStorage), populate username and score in the UI
+  if (currentUser) {
+    const usernameBox = document.getElementById("usernameBox");
+    if (usernameBox) usernameBox.innerHTML = currentUser.username;
+    if (scoreDisplay) scoreDisplay.innerText = (typeof currentUser.bestScore === 'number') ? currentUser.bestScore : score;
+  }
+
   startLeaderboardTimer();
   showForm2();
 });
