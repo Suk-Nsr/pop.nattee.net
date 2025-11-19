@@ -259,16 +259,19 @@ function logoutUser() {
   updateLoginHeader();
 }
 
-// Delete account (prompt for password then call backend)
-document.getElementById("deleteAccountHeader").addEventListener("click", async () => {
+document.getElementById("deleteAccountHeader").addEventListener("click", () => {
   if (!currentUser || !authToken) {
     alert("Not logged in.");
     return;
   }
+  document.getElementById("deleteAccountPassword").value = "";
+  document.getElementById("deleteAccountModal").style.display = "flex";
+});
 
-  const password = prompt("To delete your account permanently, enter your password:");
-  if (!password) return;
-
+// Confirm deletion
+document.getElementById("confirmDeleteAccountBtn").addEventListener("click", async () => {
+  const password = document.getElementById("deleteAccountPassword").value;
+  if (!password) return alert("Please enter your password.");
   if (!confirm("This will permanently delete your account. Continue?")) return;
 
   try {
@@ -288,13 +291,18 @@ document.getElementById("deleteAccountHeader").addEventListener("click", async (
       return;
     }
 
-    // Success: clear local state and update UI
     alert("Account deleted successfully.");
     logoutUser();
+    document.getElementById("deleteAccountModal").style.display = "none";
   } catch (err) {
     console.error("Delete account error:", err);
     alert("Error deleting account");
   }
+});
+
+// Cancel deletion
+document.getElementById("cancelDeleteAccountBtn").addEventListener("click", () => {
+  document.getElementById("deleteAccountModal").style.display = "none";
 });
 
 // Update login/logout header

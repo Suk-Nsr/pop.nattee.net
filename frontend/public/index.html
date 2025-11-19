@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
 </head>
-<body>    
+
+<body>
 
     <div class="screen" id="screen" style="display: none">
         <h1>Popper สำหรับ CP</h1>
@@ -31,11 +35,22 @@
     </header>
     <main>
         <h2 id="scoreDisplay">0</h2>
-        <img id="natteeBtn", src="picture/image.png" alt="" srcset="">
+        <img id="natteeBtn" , src="picture/image.png" alt="" srcset="">
     </main>
-    
 
-    
+    <div id="deleteAccountModal"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
+        <div style="background:white; padding:30px; border-radius:10px; min-width:300px; text-align:center;">
+            <h3>Delete Account</h3>
+            <p>Enter your password to confirm deletion:</p>
+            <input type="password" id="deleteAccountPassword" style="width:90%; padding:8px; margin-bottom:10px;"
+                autocomplete="current-password" />
+            <br>
+            <button id="confirmDeleteAccountBtn" style="background:red; color:white; margin-right:10px;">Delete</button>
+            <button id="cancelDeleteAccountBtn">Cancel</button>
+        </div>
+    </div>
+
     <footer>
         <div class="leadertop">
             <p>Leaderboard <span id="filterLeaderboard">All</span> </p>
@@ -49,7 +64,7 @@
                     <th width="5">Score</th>
                 </thead>
                 <tbody id="leaderboard">
-                    
+
                 </tbody>
             </table>
         </div>
@@ -57,69 +72,70 @@
             <p>&copy; 2025 | Team : WE 💖 CEE</p>
         </div>
 
-        
+
     </footer>
 
     <div class="form-container" id="formContainer" style="display: none;">
         <button class="close-btn" onclick="closeForm()">×</button>
         <h3>Stay calm, keep popping</h3>
-        
-    <div class="toggle-buttons">
-        <button id="login-toggle" onclick="showForm('login')">Login</button>
-        <button id="create-toggle" onclick="showForm('create')">Create Account</button>
+
+        <div class="toggle-buttons">
+            <button id="login-toggle" onclick="showForm('login')">Login</button>
+            <button id="create-toggle" onclick="showForm('create')">Create Account</button>
+        </div>
+
+        <form id="login-form" class="form-content">
+            <h4>Login</h4>
+            <p>Please login to view and add your score.</p>
+
+            <div class="form-group">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+
+            <p class="error" id="loginError" style="display: none">Incorrect Username or Password</p>
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+
+        <form id="create-account-form" class="form-content" style="display: none;">
+            <h4>Create Account</h4>
+            <p>Create an account to save your score.</p>
+
+            <div class="form-group">
+                <label for="create-username">Username:</label>
+                <input type="text" id="create-username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="create-password">Password:</label>
+                <input type="password" id="create-password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="re-enter-password">Re-enter Password:</label>
+                <input type="password" id="re-enter-password" name="re_enter_password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="account-type">Type:</label>
+                <select id="account-type" name="account_type" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </div>
+            <p class="error" id="createAccountError" style="display: none">The passwords does not match.</p>
+
+
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
     </div>
-
-    <form id="login-form" class="form-content">
-        <h4>Login</h4>
-        <p>Please login to view and add your score.</p>
-        
-        <div class="form-group">
-            <label for="login-username">Username:</label>
-            <input type="text" id="login-username" name="username" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required>
-        </div>
-        
-        <p class="error" id="loginError" style="display: none">Incorrect Username or Password</p>
-        <button type="submit" class="submit-btn">Log In</button>
-    </form>
-
-    <form id="create-account-form" class="form-content" style="display: none;">
-        <h4>Create Account</h4>
-        <p>Create an account to save your score.</p>
-
-        <div class="form-group">
-            <label for="create-username">Username:</label>
-            <input type="text" id="create-username" name="username" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="create-password">Password:</label>
-            <input type="password" id="create-password" name="password" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="re-enter-password">Re-enter Password:</label>
-            <input type="password" id="re-enter-password" name="re_enter_password" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="account-type">Type:</label>
-            <select id="account-type" name="account_type" required>
-                <option value="" disabled selected>Select Account Type</option>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-            </select>
-        </div>
-        <p class="error" id="createAccountError" style="display: none">The passwords does not match.</p>
-        
-        
-        <button type="submit" class="submit-btn">Create Account</button>
-    </form>
-</div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
