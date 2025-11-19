@@ -197,7 +197,7 @@ async function loginUser(username, password) {
     updateLoginHeader();
     setScoreFromUser();
 
-    document.getElementById("usernameBox").innerHTML = currentUser.username;
+    document.getElementById("usernameBox").innerHTML = "&#10149;" + currentUser.username;
     return true;
   } catch (err) {
     console.error("Login error:", err);
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // If a user is already logged in (saved in localStorage), populate username and score in the UI
   if (currentUser) {
     const usernameBox = document.getElementById("usernameBox");
-    if (usernameBox) usernameBox.innerHTML = currentUser.username;
+    if (usernameBox) usernameBox.innerHTML = "&#10149;" + currentUser.username;
     if (scoreDisplay) scoreDisplay.innerHTML = currentUser.bestScore;
     setScoreFromUser();
   } else {
