@@ -93,19 +93,19 @@ natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 
 function handleFilterLeaderboard() {
 
-  if (filter === 'All') {
+  if (filter === "all") {
     filter = "student";
     filterLeaderboardBtn.innerHTML = 'Student';
     filterLeaderboardBtn.style.backgroundColor = 'green';
   }
 
-  else if (filter == "student") {
+  else if (filter === "student") {
     filter = "teacher";
     filterLeaderboardBtn.innerHTML = 'Teacher';
     filterLeaderboardBtn.style.backgroundColor = 'blue';
   }
 
-  else if (filter == 'Teacher') {
+  else if (filter === "teacher") {
     filter = "all";
     filterLeaderboardBtn.innerHTML = 'All';
     filterLeaderboardBtn.style.backgroundColor = 'purple';
