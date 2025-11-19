@@ -145,11 +145,11 @@ function closeForm() {
     formContainer.style.display = 'none';
     screen.style.display = 'none';
 
-    document.getElementById("login-username").innerText = '';
-    document.getElementById("login-password").innerText = '';
-    document.getElementById("create-username").innerText = '';
-    document.getElementById("create-password").innerText = '';
-    document.getElementById("re-enter-password").innerText = '';
+    document.getElementById("login-username").innerHTML = "";
+    document.getElementById("login-password").innerHTML = "";
+    document.getElementById("create-username").innerHTML = "";
+    document.getElementById("create-password").innerHTML = "";
+    document.getElementById("re-enter-password").innerHTML = "";
 }
 
 
@@ -185,7 +185,7 @@ async function loginUser(username, password) {
     updateLoginHeader();
     setScoreFromUser();
       
-    document.getElementById("usernameBox").innerText = data.user;
+    document.getElementById("usernameBox").innerHTML = user.username;
     return true;
   } catch (err) {
     console.error("Login error:", err);
