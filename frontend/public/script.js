@@ -267,6 +267,7 @@ document.getElementById("deleteAccountHeader").addEventListener("click", () => {
   }
   document.getElementById("deleteAccountPassword").value = "";
   document.getElementById("deleteAccountError").style.display = "none";
+  document.getElementById("deleteAccountOverlay").style.display = "block";
   document.getElementById("deleteAccountModal").style.display = "block";
 });
 
@@ -306,6 +307,7 @@ document.getElementById("delete-account-form").addEventListener("submit", async 
     alert("Account deleted successfully.");
     logoutUser();
     document.getElementById("deleteAccountModal").style.display = "none";
+    document.getElementById("deleteAccountOverlay").style.display = "none";
   } catch (err) {
     document.getElementById("deleteAccountError").textContent = "Error deleting account";
     document.getElementById("deleteAccountError").style.display = "block";
@@ -315,6 +317,7 @@ document.getElementById("delete-account-form").addEventListener("submit", async 
 // Cancel deletion
 document.getElementById("cancelDeleteAccountBtn").addEventListener("click", () => {
   document.getElementById("deleteAccountModal").style.display = "none";
+  document.getElementById("deleteAccountOverlay").style.display = "none";
 });
 
 // Update login/logout header
