@@ -343,7 +343,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 40px;
+    height: 55px;
 }
 
 .loginHeader:hover, .deleteAccountHeader:hover, .userDetails:hover {
