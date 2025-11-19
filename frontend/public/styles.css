@@ -56,10 +56,11 @@ h2 {
     text-shadow: 0 0 10px #000, /* Blue glow */
                0 0 20px #000,
                0 0 30px #000;
+    z-index: 10;
 }
 
 main img {
-    width: min(85%, 45vh);
+    width: min(85%, 40vh);
 
     position: absolute;
     bottom: 10vh;

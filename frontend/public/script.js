@@ -16,24 +16,24 @@ let filter = 'All';
 let leaderboardUpdateTimer;
 
 const sawasdeeFile = [
-    'sawasdee/1.mp3',
-    'sawasdee/2.mp3',
-    'sawasdee/3.mp3',
-    'sawasdee/4.mp3',
-    'sawasdee/5.mp3',
-    'sawasdee/6.mp3',
-    'sawasdee/7.mp3',
-    'sawasdee/8.mp3',
-    'sawasdee/9.mp3',
-    'sawasdee/10.mp3',
-    'sawasdee/11.mp3',
-    'sawasdee/12.mp3',
-    'sawasdee/13.mp3',
-    'sawasdee/14.mp3',
-    'sawasdee/15.mp3',
-    'sawasdee/16.mp3',
-    'sawasdee/17.mp3',
-    'sawasdee/18.mp3',
+  'sawasdee/1.mp3',
+  'sawasdee/2.mp3',
+  'sawasdee/3.mp3',
+  'sawasdee/4.mp3',
+  'sawasdee/5.mp3',
+  'sawasdee/6.mp3',
+  'sawasdee/7.mp3',
+  'sawasdee/8.mp3',
+  'sawasdee/9.mp3',
+  'sawasdee/10.mp3',
+  'sawasdee/11.mp3',
+  'sawasdee/12.mp3',
+  'sawasdee/13.mp3',
+  'sawasdee/14.mp3',
+  'sawasdee/15.mp3',
+  'sawasdee/16.mp3',
+  'sawasdee/17.mp3',
+  'sawasdee/18.mp3',
 ]
 
 //CLICK NATTEE
@@ -78,7 +78,7 @@ function handleClickNatteeDown(event) {
 };
 
 function handleClickNatteeUp(event) {
-    natteeBtn.setAttribute("src", "picture/image.png");
+  natteeBtn.setAttribute("src", "picture/image.png");
 };
 
 natteeBtn.addEventListener('mousedown', (event) => handleClickNatteeDown(event), false);
@@ -93,25 +93,25 @@ natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 
 function handleFilterLeaderboard() {
 
-    if (filter === 'All') {
-        filter = 'Student';
-        filterLeaderboardBtn.innerHTML = 'Student';
-        filterLeaderboardBtn.style.backgroundColor = 'green';
-    }
+  if (filter === 'All') {
+    filter = 'Student';
+    filterLeaderboardBtn.innerHTML = 'Student';
+    filterLeaderboardBtn.style.backgroundColor = 'green';
+  }
 
-    else if (filter == 'Student') {
-        filter = 'Teacher';
-        filterLeaderboardBtn.innerHTML = 'Teacher';
-        filterLeaderboardBtn.style.backgroundColor = 'blue';
-    }
+  else if (filter == 'Student') {
+    filter = 'Teacher';
+    filterLeaderboardBtn.innerHTML = 'Teacher';
+    filterLeaderboardBtn.style.backgroundColor = 'blue';
+  }
 
-    else if (filter == 'Teacher') {
-        filter = 'All';
-        filterLeaderboardBtn.innerHTML = 'All';
-        filterLeaderboardBtn.style.backgroundColor = 'purple';
-    }
+  else if (filter == 'Teacher') {
+    filter = 'All';
+    filterLeaderboardBtn.innerHTML = 'All';
+    filterLeaderboardBtn.style.backgroundColor = 'purple';
+  }
 
-    fetchLeaderboard(filter);
+  fetchLeaderboard(filter);
 }
 
 filterLeaderboardBtn.addEventListener('click', () => handleFilterLeaderboard(), false)
@@ -119,49 +119,49 @@ filterLeaderboardBtn.addEventListener('click', () => handleFilterLeaderboard(), 
 //SHOW / HIDE LEADERBOARD
 
 function handleShowLeaderBoard() {
-    if (leaderBoardFrame.style.display === 'none') {
-        leaderBoardFrame.style.display = 'block';
-        showLeaderBoardBtn.innerHTML = '&#x21e9;';
-    }
+  if (leaderBoardFrame.style.display === 'none') {
+    leaderBoardFrame.style.display = 'block';
+    showLeaderBoardBtn.innerHTML = '&#x21e9;';
+  }
 
-    else {
-        leaderBoardFrame.style.display = 'none';
-        showLeaderBoardBtn.innerHTML = '&#x21e7;';
-    }
+  else {
+    leaderBoardFrame.style.display = 'none';
+    showLeaderBoardBtn.innerHTML = '&#x21e7;';
+  }
 }
 
 showLeaderBoardBtn.addEventListener("click", () => handleShowLeaderBoard());
 
 //LOGIN FORM
 function showForm2() {
-    formContainer.style.display = 'block';
-    screen.style.display = 'block';
+  formContainer.style.display = 'block';
+  screen.style.display = 'block';
 }
 
 headerLoginButton.addEventListener('click', () => showForm2());
 
 function showForm(formType) {
-    const loginForm = document.getElementById('login-form');
-    const createForm = document.getElementById('create-account-form');
+  const loginForm = document.getElementById('login-form');
+  const createForm = document.getElementById('create-account-form');
 
-    if (formType === 'login') {
-        loginForm.style.display = 'block';
-        createForm.style.display = 'none';
-    } else if (formType === 'create') {
-        loginForm.style.display = 'none';
-        createForm.style.display = 'block';
-    }
+  if (formType === 'login') {
+    loginForm.style.display = 'block';
+    createForm.style.display = 'none';
+  } else if (formType === 'create') {
+    loginForm.style.display = 'none';
+    createForm.style.display = 'block';
+  }
 }
 
 function closeForm() {
-    formContainer.style.display = 'none';
-    screen.style.display = 'none';
+  formContainer.style.display = 'none';
+  screen.style.display = 'none';
 
-    document.getElementById("login-username").innerHTML = "";
-    document.getElementById("login-password").innerHTML = "";
-    document.getElementById("create-username").innerHTML = "";
-    document.getElementById("create-password").innerHTML = "";
-    document.getElementById("re-enter-password").innerHTML = "";
+  document.getElementById("login-username").innerHTML = "";
+  document.getElementById("login-password").innerHTML = "";
+  document.getElementById("create-username").innerHTML = "";
+  document.getElementById("create-password").innerHTML = "";
+  document.getElementById("re-enter-password").innerHTML = "";
 }
 
 
@@ -196,7 +196,7 @@ async function loginUser(username, password) {
     closeForm();
     updateLoginHeader();
     setScoreFromUser();
-      
+
     document.getElementById("usernameBox").innerHTML = currentUser.username;
     return true;
   } catch (err) {
@@ -301,7 +301,7 @@ async function saveScore() {
 // Fetch leaderboard
 async function fetchLeaderboard(roleFilter) {
   try {
-    const url = roleFilter === "All" 
+    const url = roleFilter === "All"
       ? `${API_BASE_URL}/leaderboard`
       : `${API_BASE_URL}/leaderboard?role=${roleFilter}`;
 
