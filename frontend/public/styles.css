@@ -144,7 +144,7 @@ button {
     border-radius: 0;
     border-top: 1px solid grey;
 
-    max-width: 30vh;
+    max-height: 30vh;
     overflow-y: scroll;
 
 }
