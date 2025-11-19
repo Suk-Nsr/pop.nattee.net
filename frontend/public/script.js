@@ -47,22 +47,34 @@ function startLeaderboardTimer() {
   leaderboardUpdateTimer = setInterval(updateLeaderboard, 10000); // Update every 10 seconds
 }
 
+let lastTouchTime = 0; // timestamp to avoid duplicate touch->mouse events on mobile
+
 function handleClickNatteeDown(event) {
-    
-    if (!event.repeat && formContainer.style.display === 'none') {
-        natteeBtn.setAttribute("src", "picture/speak.png");
+  // Ignore repeated keydown events
+  if (event.type === 'keydown' && event.repeat) return;
 
-        const randomIndex = Math.floor(Math.random() * sawasdeeFile.length);
-        //console.log(randomIndex);
+  // If a touchstart just occurred, ignore the synthetic mousedown that follows
+  if (event.type === 'mousedown' && (Date.now() - lastTouchTime) < 600) return;
 
-        const aud = new Audio(sawasdeeFile[randomIndex]);
-        aud.play();
-        score += 1;
-        scoreDisplay.innerText = score;
+  // Mark the time of a real touchstart so following mouse events are ignored
+  if (event.type === 'touchstart') {
+    if (event.cancelable) event.preventDefault();
+    lastTouchTime = Date.now();
+  }
 
-        saveScore();
-    }
-    
+  if (formContainer.style.display === 'none') {
+    natteeBtn.setAttribute("src", "picture/speak.png");
+
+    const randomIndex = Math.floor(Math.random() * sawasdeeFile.length);
+
+    const aud = new Audio(sawasdeeFile[randomIndex]);
+    aud.play();
+    score += 1;
+    scoreDisplay.innerText = score;
+
+    saveScore();
+  }
+
 };
 
 function handleClickNatteeUp(event) {
