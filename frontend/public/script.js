@@ -365,9 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentUser) {
     const usernameBox = document.getElementById("usernameBox");
     if (usernameBox) usernameBox.innerHTML = currentUser.username;
-    if (scoreDisplay) scoreDisplay.innerText = (typeof currentUser.bestScore === 'number') ? currentUser.bestScore : score;
+    if (scoreDisplay) scoreDisplay.innerText = currentUser.bestScore;
+  } else {
+    showForm2();
   }
 
   startLeaderboardTimer();
-  showForm2();
+  
 });
