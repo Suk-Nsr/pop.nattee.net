@@ -273,8 +273,8 @@ button {
     }
 
 .screen {
-    width: 200vw;
-    height: 200vh;
+    width: 100vw;
+    height: 125vh;
     background-color: white;
 
     position: absolute;
