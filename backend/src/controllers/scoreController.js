@@ -51,7 +51,7 @@ async function getLeaderboard(req, res) {
     const topUsers = await User.find(filter)
       .select("-passwordHash")
       .sort({ bestScore: -1, createdAt: 1 })
-      .limit(10);
+      .limit(100);
 
     res.json(topUsers);
   } catch (err) {
