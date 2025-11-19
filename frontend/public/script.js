@@ -144,6 +144,12 @@ function showForm(formType) {
 function closeForm() {
     formContainer.style.display = 'none';
     screen.style.display = 'none';
+
+    document.getElementById("login-username").innerText = '';
+    document.getElementById("login-password").innerText = '';
+    document.getElementById("create-username").innerText = '';
+    document.getElementById("create-password").innerText = '';
+    document.getElementById("re-enter-password").innerText = '';
 }
 
 
