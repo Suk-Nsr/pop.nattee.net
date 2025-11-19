@@ -181,7 +181,7 @@ button {
         background-color: white;
 
         position: absolute;
-        z-index: 5;
+        z-index: 11;
         top: 10%;
         left: calc(50% - 170px);
     }
