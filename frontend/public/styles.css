@@ -321,15 +321,17 @@ button {
 .header-flex {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: 20px;
 }
 
 .header-flex h1 {
-    flex: 0 0 auto;
+    flex: 1;
+    text-align: left;
+    margin: 0;
 }
 
-.loginHeader, .deleteAccountHeader {
+.loginHeader, .deleteAccountHeader, .userDetails {
     border: 1px solid white;
     border-radius: 5px;
     padding: 0 20px;
@@ -338,9 +340,12 @@ button {
     color: white;
     font-weight: 500;
     transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    height: 40px;
 }
 
-.loginHeader:hover, .deleteAccountHeader:hover {
+.loginHeader:hover, .deleteAccountHeader:hover, .userDetails:hover {
     background-color: white;
     color: rgb(0, 116, 217);
 }

@@ -197,7 +197,6 @@ async function loginUser(username, password) {
     updateLoginHeader();
     setScoreFromUser();
 
-    document.getElementById("usernameBox").innerHTML = "&#10149;" + " " + currentUser.username;
     return true;
   } catch (err) {
     console.error("Login error:", err);
@@ -303,15 +302,18 @@ function updateLoginHeader() {
   const loginHeader = document.getElementById("loginHeader");
   const logoutHeader = document.getElementById("logoutHeader");
   const deleteAccountHeader = document.getElementById("deleteAccountHeader");
+  const usernameBox = document.getElementById("usernameBox");
 
   if (currentUser) {
     loginHeader.style.display = "none";
     deleteAccountHeader.style.display = "inline-block";
     logoutHeader.style.display = "block";
+    if (usernameBox) usernameBox.innerHTML = "&#10149; " + currentUser.username;
   } else {
     loginHeader.style.display = "block";
     deleteAccountHeader.style.display = "none";
     logoutHeader.style.display = "none";
+    if (usernameBox) usernameBox.innerHTML = "";
   }
 }
 
@@ -404,13 +406,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // If a user is already logged in (saved in localStorage), populate username and score in the UI
   if (currentUser) {
-    const usernameBox = document.getElementById("usernameBox");
-    if (usernameBox) usernameBox.innerHTML = "&#10149;" + " " + currentUser.username;
-    if (scoreDisplay) scoreDisplay.innerHTML = currentUser.bestScore;
+    updateLoginHeader();
     setScoreFromUser();
-  } else {
+    if (scoreDisplay) scoreDisplay.innerHTML = currentUser.bestScore;
+} else {
     showForm2();
-  }
+}
 
   startLeaderboardTimer();
   
