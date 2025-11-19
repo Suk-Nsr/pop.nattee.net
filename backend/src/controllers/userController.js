@@ -121,7 +121,7 @@ async function deleteUser(req, res) {
 // Delete the authenticated user's own account after verifying password
 async function deleteOwnAccount(req, res) {
   try {
-    const userId = req.userId; // auth middleware must set this
+    const userId = req.user.id; // auth middleware must set this
     const { password } = req.body;
 
     if (!password) {
