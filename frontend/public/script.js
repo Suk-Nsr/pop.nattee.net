@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (currentUser) {
     const usernameBox = document.getElementById("usernameBox");
     if (usernameBox) usernameBox.innerHTML = currentUser.username;
-    if (scoreDisplay) scoreDisplay.innerText = currentUser.bestScore;
+    if (scoreDisplay) scoreDisplay.innerHTML = score;
   } else {
     showForm2();
   }
