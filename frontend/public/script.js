@@ -361,5 +361,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLoginHeader();
   setScoreFromUser();
   startLeaderboardTimer();
-  showForm('login');
+  showForm2();
 });
