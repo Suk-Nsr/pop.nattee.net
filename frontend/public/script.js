@@ -12,7 +12,7 @@ const loginError = document.getElementById("loginError");
 const createAccountError = document.getElementById("createAccountError");
 
 let score = 0;
-let filter = 'All';
+let filter = "all";
 let leaderboardUpdateTimer;
 
 const sawasdeeFile = [
@@ -93,19 +93,19 @@ natteeBtn.addEventListener('touchend', () => handleClickNatteeUp(), false);
 
 function handleFilterLeaderboard() {
 
-  if (filter === "all") {
+  if (filter == "all") {
     filter = "student";
     filterLeaderboardBtn.innerHTML = 'Student';
     filterLeaderboardBtn.style.backgroundColor = 'green';
   }
 
-  else if (filter === "student") {
+  else if (filter == "student") {
     filter = "teacher";
     filterLeaderboardBtn.innerHTML = 'Teacher';
     filterLeaderboardBtn.style.backgroundColor = 'blue';
   }
 
-  else if (filter === "teacher") {
+  else if (filter == "teacher") {
     filter = "all";
     filterLeaderboardBtn.innerHTML = 'All';
     filterLeaderboardBtn.style.backgroundColor = 'purple';
