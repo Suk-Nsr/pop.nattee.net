@@ -185,7 +185,7 @@ async function loginUser(username, password) {
     updateLoginHeader();
     setScoreFromUser();
       
-    document.getElementById("usernameBox").innerHTML = user.username;
+    document.getElementById("usernameBox").innerHTML = currentUser.username;
     return true;
   } catch (err) {
     console.error("Login error:", err);

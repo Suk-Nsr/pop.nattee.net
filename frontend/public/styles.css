@@ -59,7 +59,7 @@ h2 {
 }
 
 main img {
-    width: min(65vw, 65vh);
+    width: min(85%, 45vh);
 
     position: absolute;
     bottom: 10vh;
