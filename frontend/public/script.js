@@ -260,17 +260,58 @@ function logoutUser() {
   updateLoginHeader();
 }
 
+// Delete account (prompt for password then call backend)
+document.getElementById("deleteAccountBtn").addEventListener("click", async () => {
+  if (!currentUser || !authToken) {
+    alert("Not logged in.");
+    return;
+  }
+
+  const password = prompt("To delete your account permanently, enter your password:");
+  if (!password) return;
+
+  if (!confirm("This will permanently delete your account. Continue?")) return;
+
+  try {
+    const resp = await fetch(`${API_BASE_URL}/users/me`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${authToken}`
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await resp.json();
+
+    if (!resp.ok) {
+      alert(data?.error || "Failed to delete account");
+      return;
+    }
+
+    // Success: clear local state and update UI
+    alert("Account deleted successfully.");
+    logoutUser();
+  } catch (err) {
+    console.error("Delete account error:", err);
+    alert("Error deleting account");
+  }
+});
+
 // Update login/logout header
 function updateLoginHeader() {
   const loginHeader = document.getElementById("loginHeader");
   const logoutHeader = document.getElementById("logoutHeader");
+  const deleteBtn = document.getElementById("deleteAccountBtn");
 
   if (currentUser) {
     loginHeader.style.display = "none";
     logoutHeader.style.display = "block";
+    if (deleteBtn) deleteBtn.style.display = "inline-block";
   } else {
     loginHeader.style.display = "block";
     logoutHeader.style.display = "none";
+    if (deleteBtn) deleteBtn.style.display = "none";
   }
 }
 

@@ -2,6 +2,7 @@
 // Full CRUD operations on User model
 
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 // GET /api/users
 // Read: get all users
@@ -116,10 +117,46 @@ async function deleteUser(req, res) {
   }
 }
 
+// DELETE /api/users/me
+// Delete the authenticated user's own account after verifying password
+async function deleteOwnAccount(req, res) {
+  try {
+    const userId = req.userId; // auth middleware must set this
+    const { password } = req.body;
+
+    if (!password) {
+      return res.status(400).json({ error: "Password is required" });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Ensure account has a real password (skip if NO_PASSWORD placeholder)
+    if (!user.passwordHash || user.passwordHash === "NO_PASSWORD") {
+      return res.status(403).json({ error: "This account cannot be deleted without proper credentials" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!isMatch) {
+      return res.status(401).json({ error: "Incorrect password" });
+    }
+
+    await User.deleteOne({ _id: userId });
+
+    res.json({ message: "Account deleted successfully" });
+  } catch (err) {
+    console.error("Error in deleteOwnAccount:", err.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
+  deleteOwnAccount,
 };

@@ -1,6 +1,4 @@
-// src/routes/userRoutes.js
-// Routes for CRUD operations on users
-
+// ...existing code...
 const express = require("express");
 const {
   getAllUsers,
@@ -8,7 +6,10 @@ const {
   createUser,
   updateUser,
   deleteUser,
+  deleteOwnAccount, // added
 } = require("../controllers/userController");
+
+const authenticate = require("../middleware/authMiddleware"); // added
 
 const router = express.Router();
 
@@ -22,13 +23,18 @@ router.get("/test", (req, res) => {
 // GET /api/users
 router.get("/", getAllUsers);
 
-// READ: get a user by id
-// GET /api/users/:id
-router.get("/:id", getUserById);
-
 // CREATE: create user (for admin/testing)
 // POST /api/users
 router.post("/", createUser);
+
+// Delete own account (requires authentication)
+// DELETE /api/users/me
+// MUST be defined before routes that use :id to avoid route collision
+router.delete("/me", authenticate, deleteOwnAccount);
+
+// READ: get a user by id
+// GET /api/users/:id
+router.get("/:id", getUserById);
 
 // UPDATE: update user
 // PUT /api/users/:id
