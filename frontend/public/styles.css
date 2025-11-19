@@ -350,3 +350,10 @@ button {
     background-color: white;
     color: rgb(0, 116, 217);
 }
+
+#deleteAccountModal .submit-btn {
+    background: red;
+}
+#deleteAccountModal .submit-btn:hover {
+    background: #b30000;
+}

@@ -38,18 +38,19 @@
         <img id="natteeBtn" , src="picture/image.png" alt="" srcset="">
     </main>
 
-    <div id="deleteAccountModal"
-        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center;">
-        <div style="background:white; padding:30px; border-radius:10px; min-width:300px; text-align:center;">
-            <h3>Delete Account</h3>
-            <p>Enter your password to confirm deletion:</p>
-            <input type="password" id="deleteAccountPassword" style="width:90%; padding:8px; margin-bottom:10px;"
-                autocomplete="current-password" />
-            <br>
-            <button id="confirmDeleteAccountBtn" style="background:red; color:white; margin-right:10px;">Delete</button>
-            <button id="cancelDeleteAccountBtn">Cancel</button>
+    <div class="form-container" id="deleteAccountModal" style="display:none; z-index:999;">
+    <button class="close-btn" id="cancelDeleteAccountBtn">×</button>
+    <h3>Delete Account</h3>
+    <p>Enter your password to confirm deletion:</p>
+    <form id="delete-account-form" class="form-content">
+        <div class="form-group">
+            <label for="deleteAccountPassword">Password:</label>
+            <input type="password" id="deleteAccountPassword" name="deleteAccountPassword" required autocomplete="current-password" />
         </div>
-    </div>
+        <p class="error" id="deleteAccountError" style="display: none"></p>
+        <button type="submit" class="submit-btn" style="background:red; margin-top:10px;">Delete</button>
+    </form>
+</div>
 
     <footer>
         <div class="leadertop">

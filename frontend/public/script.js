@@ -50,6 +50,7 @@ function startLeaderboardTimer() {
 let lastTouchTime = 0; // timestamp to avoid duplicate touch->mouse events on mobile
 
 function handleClickNatteeDown(event) {
+  if (isDeleteModalOpen()) return;
   // Ignore repeated keydown events
   if (event.type === 'keydown' && event.repeat) return;
 
@@ -265,13 +266,23 @@ document.getElementById("deleteAccountHeader").addEventListener("click", () => {
     return;
   }
   document.getElementById("deleteAccountPassword").value = "";
-  document.getElementById("deleteAccountModal").style.display = "flex";
+  document.getElementById("deleteAccountError").style.display = "none";
+  document.getElementById("deleteAccountModal").style.display = "block";
 });
 
+function isDeleteModalOpen() {
+  return document.getElementById("deleteAccountModal").style.display === "block";
+}
+
 // Confirm deletion
-document.getElementById("confirmDeleteAccountBtn").addEventListener("click", async () => {
+document.getElementById("delete-account-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
   const password = document.getElementById("deleteAccountPassword").value;
-  if (!password) return alert("Please enter your password.");
+  if (!password) {
+    document.getElementById("deleteAccountError").textContent = "Please enter your password.";
+    document.getElementById("deleteAccountError").style.display = "block";
+    return;
+  }
   if (!confirm("This will permanently delete your account. Continue?")) return;
 
   try {
@@ -287,7 +298,8 @@ document.getElementById("confirmDeleteAccountBtn").addEventListener("click", asy
     const data = await resp.json();
 
     if (!resp.ok) {
-      alert(data?.error || "Failed to delete account");
+      document.getElementById("deleteAccountError").textContent = data?.error || "Failed to delete account";
+      document.getElementById("deleteAccountError").style.display = "block";
       return;
     }
 
@@ -295,8 +307,8 @@ document.getElementById("confirmDeleteAccountBtn").addEventListener("click", asy
     logoutUser();
     document.getElementById("deleteAccountModal").style.display = "none";
   } catch (err) {
-    console.error("Delete account error:", err);
-    alert("Error deleting account");
+    document.getElementById("deleteAccountError").textContent = "Error deleting account";
+    document.getElementById("deleteAccountError").style.display = "block";
   }
 });
 
