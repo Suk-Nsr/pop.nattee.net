@@ -158,11 +158,11 @@ function closeForm() {
   formContainer.style.display = 'none';
   screen.style.display = 'none';
 
-  document.getElementById("login-username").innerHTML = "";
-  document.getElementById("login-password").innerHTML = "";
-  document.getElementById("create-username").innerHTML = "";
-  document.getElementById("create-password").innerHTML = "";
-  document.getElementById("re-enter-password").innerHTML = "";
+  document.getElementById("login-username").value = "";
+  document.getElementById("login-password").value = "";
+  document.getElementById("create-username").value = "";
+  document.getElementById("create-password").value = "";
+  document.getElementById("re-enter-password").value = "";
 }
 
 
