@@ -394,7 +394,7 @@ button {
 }
 
 @media screen and (max-width: 450px) {
-  h1 {
+  .popNattee {
     font-size: 4vw; 
   }
 }
