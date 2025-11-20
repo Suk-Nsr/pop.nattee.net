@@ -329,14 +329,18 @@ function updateLoginHeader() {
 
   if (currentUser) {
     loginHeader.style.display = "none";
+    usernameBox.style.display = "flex";
     deleteAccountHeader.style.display = "inline-block";
-    logoutHeader.style.display = "block";
-    if (usernameBox) usernameBox.innerHTML = "&#10149; " + currentUser.username;
+    //logoutHeader.style.display = "block";
+    //if (usernameBox) usernameBox.innerHTML = "&#10149; " + currentUser.username;
+    logoutHeader.innerHTML = "&#10149; " + currentUser.username;
   } else {
     loginHeader.style.display = "block";
+    usernameBox.style.display = "none";
     deleteAccountHeader.style.display = "none";
-    logoutHeader.style.display = "none";
-    if (usernameBox) usernameBox.innerHTML = "";
+    //logoutHeader.style.display = "none";
+    //if (usernameBox) usernameBox.innerHTML = "";
+    logoutHeader.innerHTML = "";
   }
 }
 

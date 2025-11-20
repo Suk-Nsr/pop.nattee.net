@@ -323,6 +323,7 @@ button {
     align-items: center;
     justify-content: flex-end;
     gap: 20px;
+    width: 100%;
 }
 
 .header-flex h1 {
@@ -332,9 +333,9 @@ button {
 }
 
 .loginHeader, .deleteAccountHeader, .userDetails {
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.802);
     border-radius: 5px;
-    padding: 0 20px;
+    padding: 0;
     cursor: pointer;
     background: transparent;
     color: white;
@@ -343,12 +344,26 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 55px;
 }
 
-.loginHeader:hover, .deleteAccountHeader:hover, .userDetails:hover {
-    background-color: white;
-    color: rgb(0, 116, 217);
+.loginHeader p {
+    margin: 0.75rem;
+}
+
+.userinfoBox {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.header-flex div * {
+    opacity: 0.8;
+}
+
+#deleteAccountHeader:hover, #userDetails:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
 #deleteAccountModal .submit-btn {
