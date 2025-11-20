@@ -360,7 +360,7 @@ button {
     opacity: 0.8;
 }
 
-#deleteAccountHeader:hover, #userDetails:hover {
+#deleteAccountHeader:hover, #userDetails:hover, #logoutHeader:hover {
     opacity: 0.5;
     cursor: pointer;
     transition: opacity 0.2s;
@@ -391,4 +391,10 @@ button {
     transform: translateX(-50%);
     width: 300px;
     margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+  h1 {
+    font-size: 4vw; 
+  }
 }
